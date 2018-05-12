@@ -1,24 +1,29 @@
 import mlbgame
+from player import *
 
-'''play = mlbgame.players(mlbgame.day(2015, 4, 12, home='Royals', away='Royals')[0].game_id)
-a = mlbgame.box_score(mlbgame.day(2015, 4, 12, home='Royals', away='Royals')[0].game_id)
-print(a.print_scoreboard())'''
 
-'''for p in play.home_players:
-    #if p.first == 'Albert':
-    print(p.first, p.last, p.rbi)'''
+def main():     # acts as main method
+    cubsPlayers = []
+    teams = mlbgame.teams()  # Grabs list of team objects
 
-teams = mlbgame.teams()         # Grabs list of team objects
-pCount = 0
+    for team in teams:
+        if team.club_common_name == 'Cubs':
+            id = team.team_id
+            # print(id, team.club_common_name, team.division)
 
-for team in teams:
-    print(team)
-    rost = mlbgame.roster(team.team_id).players
+    count = 0
+    # for team in teams:
+    for i in range(3, 9):
+        year = mlbgame.games(2015, i, home='Cubs', away='Cubs')
+        games = mlbgame.combine_games(year)
+        for game in games:
+            try:
+                cubsGameStats = mlbgame.player_stats(game.game_id)
+                count += 1
+                print(game, count)
+            except ValueError:
+                print('No game found')
 
-    for p in rost:
-        pCount += 1
-        print(p.name_display_first_last, pCount)
-    #print("\n")
 
-    '''for player in teams:
-        print(player.name_display_first_last)'''
+if __name__ == '__main__':      # main method
+    main()
