@@ -1,18 +1,17 @@
 class Player:
-    def __init__(self, firstName, lastName, teamID, teamName):
+    def __init__(self, firstName, lastName):
         self.firstName = firstName
         self.lastName = lastName
-        self.teamID = teamID
-        self.teamName = teamName
+
 
     def __str__(self):
         return self.lastName + ', ' + self.firstName
 
 
 class Batter(Player):
-    def __init__(self, firstName, lastName, avg):
+    def __init__(self, firstName, lastName, hr):
         super().__init__(firstName, lastName)
-        self.avg = avg
+        self.hr = hr
 
 
 class Pitcher(Player):
