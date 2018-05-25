@@ -2,6 +2,7 @@ import mlbgame
 from player import Pitcher, Batter
 
 
+
 def main():     # acts as main method
     cubsPlayers = []
     teams = mlbgame.teams()  # Grabs list of team objects
